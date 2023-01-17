@@ -33,7 +33,7 @@ static disp() {
         list.deleteRow(delButton.id);
         book.splice(delButton.id, 1);
         localStorage.setItem('our-books', JSON.stringify(book));
-        // Books.disp();
+        this.disp();
       });
     });
     return 0;
@@ -46,7 +46,7 @@ static disp() {
       book.push(bookData);
       localStorage.setItem('our-books', JSON.stringify(book));
      
-    //   Books.disp();
+   this.disp();
       document.querySelector('form').reset();
     }
   }
@@ -54,6 +54,6 @@ static disp() {
 
 myButton.addEventListener('click', Books.addBook);
 
-// Books.disp();
+UserInterface.disp();
 // displayTime();
 
