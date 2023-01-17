@@ -3,14 +3,13 @@
 import Books  from './modules/books.js';
 import UserInterface from './modules/display.js';
 
-document.querySelector('form').addEventListener('submit', (e) => {
+document.querySelector('form').addEventListener('submit', (event) => {
   // prevent default
-  // e.preventDefault();
+  event.preventDefault();
   // get form values
   const tittle = document.querySelector('#text').value;
   const author = document.querySelector('#txt').value;
 
-  // Validate
 
   // Instantiate book
   const book = new Books(tittle, author);

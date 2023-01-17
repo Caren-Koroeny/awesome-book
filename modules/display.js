@@ -1,5 +1,6 @@
 // import displayTime from './dateTime.js'
 import Books from './books.js';
+
 const book = JSON.parse(localStorage.getItem('our-books')) || [{}];
 
   
@@ -44,6 +45,7 @@ static disp() {
       const bookData = new Books(inputTitle.value, inputAuthor.value);
       book.push(bookData);
       localStorage.setItem('our-books', JSON.stringify(book));
+     
     //   Books.disp();
       document.querySelector('form').reset();
     }
@@ -54,5 +56,4 @@ myButton.addEventListener('click', Books.addBook);
 
 // Books.disp();
 // displayTime();
-const tittle = document.querySelector('#text').value;
-const author = document.querySelector('#txt').value;
+
