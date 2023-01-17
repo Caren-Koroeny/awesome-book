@@ -125,7 +125,7 @@
     padding: 10px;
   }
   
-  .books-list-container {
+  #books-list-container {
     width: 100%;
     height: 40vh;
     max-width: 700px;

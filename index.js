@@ -1,68 +1,32 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-return-assign */
+import Books  from './modules/books.js';
+import UserInterface from './modules/display.js';
 
-const book = JSON.parse(localStorage.getItem('our-books')) || [{
-    title: 'The Great Gatsby', author: 'F. Scott Fitzgerald',
-  }, {
-    title: 'Jane Eyre', author: 'Charlotte Bronte',
-  }];
+document.querySelector('form').addEventListener('submit', (e) => {
+  // prevent default
+  // e.preventDefault();
+  // get form values
+  const tittle = document.querySelector('#text').value;
+  const author = document.querySelector('#txt').value;
+
+  // Validate
+
+  // Instantiate book
+  const book = new Books(tittle, author);
+
+  // Event:Display Books
+  document.addEventListener('DOMContentLoaded', () => {
+    UserInterface.disp()
+  })
+
+  // Instantiate book
+  const bookEl = new Books(tittle, author);
+  // Add book to display
+  UserInterface.addBook(bookEl)
+});
+
   
-  const inputTitle = document.querySelector('#text');
-  const inputAuthor = document.querySelector('#txt');
-  const myButton = document.querySelector('.btn-list');
-  const list = document.getElementById('book-list');
-  const books = document.querySelector('.books');
-  const time = document.querySelector('.time');
-  
-  class Books {
-    constructor(title, author) {
-      this.title = title;
-      this.author = author;
-    }
-  
-    static disp() {
-      if (book.length === 0) {
-        list.innerText = 'No Books To Display';
-        return 0;
-      }
-      list.innerHTML = '';
-      let i = -1;
-      book.forEach((item) => {
-        const tr = document.createElement('tr');
-        tr.setAttribute('class', 'book-row');
-        tr.innerHTML = ` <td>"${item.title}" &nbsp by &nbsp ${item.author}</td> 
-          <td><button class="delete-btn btn btn-outline-primary" id="${i += 1}">Remove</button></td>
-        `;
-        list.appendChild(tr);
-      });
-      const buttonItem = document.querySelectorAll('.delete-btn');
-      buttonItem.forEach((item) => {
-        item.addEventListener('click', (e) => {
-          const delButton = e.target;
-          list.deleteRow(delButton.id);
-          book.splice(delButton.id, 1);
-          localStorage.setItem('our-books', JSON.stringify(book));
-          Books.disp();
-        });
-      });
-      return 0;
-    }
-  
-    static addBook(e) {
-      if (inputTitle.value && inputAuthor.value !== '') {
-        e.preventDefault();
-        const bookData = new Books(inputTitle.value, inputAuthor.value);
-        book.push(bookData);
-        localStorage.setItem('our-books', JSON.stringify(book));
-        Books.disp();
-        document.querySelector('form').reset();
-      }
-    }
-  }
-  
-  myButton.addEventListener('click', Books.addBook);
-  
-  Books.disp();
   
   // Full app with the navigation area
   const sec1 = document.querySelector('.section1');
@@ -102,27 +66,4 @@ const book = JSON.parse(localStorage.getItem('our-books')) || [{
   listBtn.addEventListener('click', listbookShow);
   addbookBtn.addEventListener('click', addNewBookShow);
   
-  // TIme function
-  
-  const setTime = () => {
-    const date = new Date();
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    const day = date.getDate();
-    let minutes = date.getMinutes();
-    const hours = date.getHours();
-    let seconds = date.getSeconds();
-  
-    if (seconds.toString().length < 2) {
-      seconds = `0${seconds}`;
-    }
-    if (minutes.toString().length < 2) {
-      minutes = `0${minutes}`;
-    }
-  
-    const currentTime = `${month} ${day}th ${year}, ${hours}:${minutes}:${seconds}`;
-    time.textContent = '';
-    time.textContent = `${currentTime}`;
-  };
-  setTime();
+ 
