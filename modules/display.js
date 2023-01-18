@@ -3,16 +3,13 @@ import Books from './books.js';
 
 const book = JSON.parse(localStorage.getItem('our-books')) || [{}];
 
-  
 const inputTitle = document.querySelector('#text');
 const inputAuthor = document.querySelector('#txt');
 const myButton = document.querySelector('.btn-list');
 const list = document.getElementById('book-list');
-const books = document.querySelector('.books');
-
 
 export default class UserInterface {
-static disp() {
+  static disp() {
     // Book list display after user adds
     list.innerHTML = '';
     let i = -1;
@@ -24,7 +21,7 @@ static disp() {
       `;
       list.appendChild(tr);
     });
-    
+
     // Function to remove book on the list by clicking Remove btn
     const buttonItem = document.querySelectorAll('.delete-btn');
     buttonItem.forEach((item) => {
@@ -38,15 +35,15 @@ static disp() {
     });
     return 0;
   }
-// input field to the user to add title and author
-  static addBook(e) {
+
+  // input field to the user to add title and author
+  static addBook() {
     if (inputTitle.value && inputAuthor.value !== '') {
-    //   e.preventDefault();
       const bookData = new Books(inputTitle.value, inputAuthor.value);
       book.push(bookData);
       localStorage.setItem('our-books', JSON.stringify(book));
-     
-   this.disp();
+
+      this.disp();
       document.querySelector('form').reset();
     }
   }
@@ -56,4 +53,3 @@ myButton.addEventListener('click', Books.addBook);
 
 UserInterface.disp();
 // displayTime();
-
