@@ -2,6 +2,7 @@
 /* eslint-disable no-return-assign */
 import Books from './modules/books.js';
 import UserInterface from './modules/display.js';
+import displayTime from './modules/dateTime.js';
 
 document.querySelector('form').addEventListener('submit', (e) => {
   // prevent default
@@ -16,6 +17,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
   // Event:Display Books
   document.addEventListener('DOMContentLoaded', () => {
     UserInterface.disp();
+    displayTime();
   });
 
   // Instantiate book

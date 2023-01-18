@@ -1,4 +1,3 @@
-// import displayTime from './dateTime.js'
 import Books from './books.js';
 
 const book = JSON.parse(localStorage.getItem('our-books')) || [{}];
@@ -11,6 +10,7 @@ const list = document.getElementById('book-list');
 export default class UserInterface {
   static disp() {
     // Book list display after user adds
+
     list.innerHTML = '';
     let i = -1;
     book.forEach((item) => {
@@ -42,7 +42,6 @@ export default class UserInterface {
       const bookData = new Books(inputTitle.value, inputAuthor.value);
       book.push(bookData);
       localStorage.setItem('our-books', JSON.stringify(book));
-
       this.disp();
       document.querySelector('form').reset();
     }
@@ -52,4 +51,3 @@ export default class UserInterface {
 myButton.addEventListener('click', Books.addBook);
 
 UserInterface.disp();
-// displayTime();
