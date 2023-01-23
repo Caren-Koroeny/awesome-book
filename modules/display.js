@@ -8,7 +8,7 @@ const myButton = document.querySelector('.btn-list');
 const list = document.getElementById('book-list');
 
 export default class UserInterface {
-  static disp() {
+  static disp = () => {
     // Book list display after user adds
 
     list.innerHTML = '';
@@ -37,7 +37,7 @@ export default class UserInterface {
   }
 
   // input field to the user to add title and author
-  static addBook() {
+  static addBook = () => {
     if (inputTitle.value && inputAuthor.value !== '') {
       const bookData = new Books(inputTitle.value, inputAuthor.value);
       book.push(bookData);
