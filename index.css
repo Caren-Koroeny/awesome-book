@@ -162,6 +162,12 @@ input {
   padding: 4px;
 }
 
+.caren-text{
+  text-align: center;
+  align-items: center;
+  margin-left: 35%;
+}
+
 /* time container */
 
 .time-section {
@@ -169,3 +175,5 @@ input {
   justify-content: flex-end;
   margin: 30px 5% 0 0;
 }
+
+
